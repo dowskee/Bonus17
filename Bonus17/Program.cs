@@ -39,7 +39,7 @@ namespace Bonus17
                 CarApp[i].Year = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("Please enter the car's Price:");
-                CarApp[i].Price = double.Parse(Console.ReadLine()); //n2 for price writing in class
+                CarApp[i].Price = double.Parse(Console.ReadLine()); //n2 for price writing in class has to be where it is written below
             }
             Console.WriteLine("Current Inventory:");
             Console.WriteLine("Make \tModel \tYear \tPrice");
