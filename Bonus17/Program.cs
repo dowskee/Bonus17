@@ -39,14 +39,14 @@ namespace Bonus17
                 CarApp[i].Year = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("Please enter the car's Price:");
-                CarApp[i].Price = double.Parse(Console.ReadLine()); //n2 for price writing
+                CarApp[i].Price = double.Parse(Console.ReadLine()); //n2 for price writing in class
             }
             Console.WriteLine("Current Inventory:");
             Console.WriteLine("Make \tModel \tYear \tPrice");
 
             foreach (Car Element in CarApp)
             {
-                Console.WriteLine($"{Element.Make} \t{Element.Model} \t{Element.Year} \t{Element.Price}");
+                Console.WriteLine($"{Element.Make} \t{Element.Model} \t{Element.Year} \t${Element.Price.ToString("N2")}");
             }
 
         }

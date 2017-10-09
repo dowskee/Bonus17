@@ -50,7 +50,8 @@ namespace Bonus17
             Year = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Please enter the price of the car:");
-            Price = double.Parse(Console.ReadLine()); 
+            Price = double.Parse(Console.ReadLine());
+            
         }
         //constructors
 
@@ -64,9 +65,9 @@ namespace Bonus17
         }
 
         //consturctor with values
-        public Car(string Make, string Model, int Year, double Price)
+        public Car(string CarMake, string CarModel, int CarYear, double CarPrice)
         {
-            make = CarMake;
+            make = CarMake; //calls Make from the array Car
             model = CarModel;
             year = CarYear;
             price = CarPrice;
