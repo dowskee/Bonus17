@@ -26,29 +26,115 @@ namespace Bonus17
             }
 
             //initialize
-
+        
             for (int i = 0; i < CarApp.Length; i++)
             {
-                Console.WriteLine("Please enter the car's Make");
                 CarApp[i].Make = Console.ReadLine();
 
-                Console.WriteLine("Please enter the car's Model");
                 CarApp[i].Model = Console.ReadLine();
 
-                Console.WriteLine("Please enter the car's Year");
                 CarApp[i].Year = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Please enter the car's Price:");
-                CarApp[i].Price = double.Parse(Console.ReadLine()); //n2 for price writing in class has to be where it is written below
+                CarApp[i].Price = double.Parse(Console.ReadLine());
             }
             Console.WriteLine("Current Inventory:");
-            Console.WriteLine("Make \tModel \tYear \tPrice");
+            Console.WriteLine("Make".PadRight(10,' ') +"\t"+ "Model".PadRight(10, ' ') +"\t" + "Year".PadRight(10, ' ') + "\t" + "Price".PadRight(10, ' '));
 
             foreach (Car Element in CarApp)
             {
-                Console.WriteLine($"{Element.Make} \t{Element.Model} \t{Element.Year} \t${Element.Price.ToString("N2")}");
+                Console.WriteLine($"{Element.Make.PadRight(10, ' ')} \t{Element.Model.PadRight(10, ' ')} \t{Element.Year.ToString().PadRight(10, ' ')} \t${Element.Price.ToString("N2").PadRight(10, ' ')}");
             }
 
+        }
+        public void ValidateMake(string Make)
+        {
+            bool check = false;
+
+            Console.WriteLine("Please enter the car's Make:");
+            Make = Console.ReadLine().ToLower(); //include lower and upper case
+
+            for (int i = 0; i < Make.Length; i++)
+            {
+                if (Make[i] >= 'a' && Make[i] <= 'z' || Make[i] == ' ') //checks for letters a-z and blank spaces
+                {
+                    check = true;
+                }
+                else
+                {
+                    check = false;
+                }
+
+            }
+
+            if (check == false)
+            {
+                Console.WriteLine("Enter a valid car Make:");
+                Make = Console.ReadLine();
+            }
+        }
+
+        public void ValidateModel(string Model)
+        {
+            bool check = false;
+
+            Console.WriteLine("Please enter the car Model:");
+            Model = Console.ReadLine().ToLower(); //check for capitalization
+
+            for (int i = 0; i < Model.Length; i++)
+            {
+                if (Model[i] >= 'a' && Model[i] <= 'z' || Model[i] == ' ') //checks that only letters a-z are covered for model input
+                {
+                    check = true;
+                }
+                else
+                {
+                    check = false;
+                }
+
+            }
+
+            if (check == false)
+            {
+                Console.WriteLine("Enter a valid car model:");
+                Model = Console.ReadLine();
+            }
+        }
+
+        public void ValidateYear(int Year)
+        {
+            bool check = false;
+            //drop down list? 
+            Console.WriteLine("Please enter the car Year:");
+            Year = int.Parse(Console.ReadLine());
+
+            if (Year < 1900 && Year > 3000) //covers valid years where cars have been made
+            {
+                check = true;
+            }
+            else if (check == false)
+            {
+                Console.WriteLine("Enter a valid Year:");
+                Year = int.Parse(Console.ReadLine());
+                check = false;
+            }
+
+        }
+
+        public void ValidatePrice(double Price)
+        {
+            Console.WriteLine("Please enter the car Price:");
+            string input = Console.ReadLine(); //set the input as a string variable
+            double price; //double variable
+
+            if (!double.TryParse(input, out price)) //checks if input is a valid number
+            {
+                while (Price < 0) //catches if no number is entered 
+                {
+                    Console.WriteLine("Please enter a valid Price:"); //display message to user
+                    double.TryParse(Console.ReadLine(), out price);
+                }
+
+            }
         }
     }
 }
